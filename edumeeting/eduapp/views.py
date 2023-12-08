@@ -222,7 +222,7 @@ def courseview_view(request):
     fees = []
     id2=[]
     for i in a:
-        # if i.teacher_id == id1:
+        if i.teacher_id == id1:
             course.append(i.course_name)
             img.append(str(i.course_img).split('/')[-1])
             institution.append(i.institution_name)
