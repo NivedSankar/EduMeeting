@@ -237,3 +237,34 @@ def courseview_view(request):
     print(to_time)
 
     return render(request,'courseview_teacher.html',{'data':mylist,'img':img})
+
+def studentcourse_view(request):
+    id1 =  request.session['st_id']
+    b = studentreg.objects.get(id=id1)
+    img1 = str(b.photo).split('/')[-1]
+    a = coursemodel.objects.all()
+    course = []
+    img = []
+    institution = []
+    from_day = []
+    to_day = []
+    from_time = []
+    to_time = []
+    fees = []
+    id2=[]
+    for i in a:
+        # if i.teacher_id == id1:
+            course.append(i.course_name)
+            img.append(str(i.course_img).split('/')[-1])
+            institution.append(i.institution_name)
+            from_day.append(i.from_day)
+            to_day.append(i.to_day)
+            from_time.append(i.from_time.strftime('%I:%M %p'))
+            to_time.append(i.to_time.strftime('%I:%M %p'))
+            fees.append(i.fees)
+            id2.append(i.id)
+    mylist = zip(course,img,institution,from_day,to_day,from_time,to_time,fees,id2)
+    print(img)
+    print(to_time)
+
+    return render(request,'courseview_student.html',{'data':mylist,'img':img1})
