@@ -5,3 +5,4 @@ from .models import *
 admin.site.register(studentreg)
 admin.site.register(teacher)
 admin.site.register(coursemodel)
+admin.site.register(course_enrolled)

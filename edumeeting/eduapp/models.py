@@ -64,3 +64,17 @@ class coursemodel(models.Model):
     def __str__(self):
         return self.course_name
 
+class course_enrolled(models.Model):
+    student_id = models.CharField(max_length=20)
+    teacher_id = models.CharField(max_length=20)
+    course_name = models.CharField(max_length=30)
+    course_img = models.FileField(upload_to='eduapp/static/assets/images')
+    institution_name = models.CharField(max_length=30)
+    from_day  = models.CharField(max_length=30)
+    to_day = models.CharField(max_length=30)
+    from_time = models.TimeField()
+    to_time = models.TimeField()
+    total = models.IntegerField()
+    def __str__(self):
+        return self.course_name
+

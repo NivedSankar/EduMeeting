@@ -295,5 +295,45 @@ def course_payment(request,id):
             total = a.fees - 300
         else:
             total = a.fees
+    request.session['total'] = total
 
     return render(request, 'course_payment.html', {'data': a, 'img1': img1, 'img2': img2,'name':name,'total':total,'from':from_time,'to':to_time})
+
+def enrolled_course(request,id):
+    a = coursemodel.objects.get(id=id)
+    id1 = request.session['st_id']
+    total = request.session['total']
+    b = course_enrolled(course_name=a.course_name,course_img=a.course_img,teacher_id=a.teacher_id,institution_name=a.institution_name,from_day=a.from_day,to_day=a.to_day,from_time=a.from_time,to_time=a.to_time,total=total,student_id=id1)
+    b.save()
+    return HttpResponse('course enrolled')
+
+def enrolledcourse_view(request):
+    id1 = request.session['st_id']
+    b = studentreg.objects.get(id=id1)
+    img1 = str(b.photo).split('/')[-1]
+    a = course_enrolled.objects.all()
+    course = []
+    img = []
+    institution = []
+    from_day = []
+    to_day = []
+    from_time = []
+    to_time = []
+    fees = []
+    id2 = []
+    for i in a:
+        # if i.teacher_id == id1:
+        course.append(i.course_name)
+        img.append(str(i.course_img).split('/')[-1])
+        institution.append(i.institution_name)
+        from_day.append(i.from_day)
+        to_day.append(i.to_day)
+        from_time.append(i.from_time.strftime('%I:%M %p'))
+        to_time.append(i.to_time.strftime('%I:%M %p'))
+        fees.append(i.fees)
+        id2.append(i.id)
+    mylist = zip(course, img, institution, from_day, to_day, from_time, to_time, fees, id2)
+    print(img)
+    print(to_time)
+
+    return render(request, 'courseview_student.html', {'data': mylist, 'img': img1})
