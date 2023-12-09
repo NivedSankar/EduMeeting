@@ -15,5 +15,6 @@ urlpatterns = [
     path('add_course/',add_course),
     path('course_teacher/',courseteacher_view),
     path('edit_course/<int:id>',edit_course),
-    path('course_student/',studentcourse_view)
+    path('course_student/',studentcourse_view),
+    path('course_details/<int:id>',studentcourse_details)
 ]

@@ -39,7 +39,7 @@ def regstudent(request):
     return render(request,'studentreg.html')
 
 def meeting_details(request):
-    return render(request,'meeting-details.html')
+    return render(request,'studentcourse_details.html')
 
 def student_login(request):
     if request.method == 'POST':
@@ -269,3 +269,13 @@ def studentcourse_view(request):
     print(to_time)
 
     return render(request,'courseview_student.html',{'data':mylist,'img':img1})
+
+def studentcourse_details(request,id):
+    id1 =  request.session['st_id']
+    b = studentreg.objects.get(id=id1)
+    img1 = str(b.photo).split('/')[-1]
+    a = coursemodel.objects.get(id=id)
+    img2 = str(a.course_img).split('/')[-1]
+
+
+    return render(request,'studentcourse_details.html',{'data':a,'img1':img1,'img2':img2})
