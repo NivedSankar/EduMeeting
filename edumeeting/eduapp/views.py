@@ -279,3 +279,12 @@ def studentcourse_details(request,id):
 
 
     return render(request,'studentcourse_details.html',{'data':a,'img1':img1,'img2':img2})
+
+def course_payment(request,id):
+    id1 = request.session['st_id']
+    b = studentreg.objects.get(id=id1)
+    img1 = str(b.photo).split('/')[-1]
+    a = coursemodel.objects.get(id=id)
+    img2 = str(a.course_img).split('/')[-1]
+
+    return render(request, 'studentcourse_details.html', {'data': a, 'img1': img1, 'img2': img2})
