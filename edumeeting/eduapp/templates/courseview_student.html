@@ -120,42 +120,46 @@ https://templatemo.com/tm-569-edu-meeting
                 </ul>
               </div>
             </div>
-            <div class="col-lg-12">
-              <div class="row grid">
-                <div class="col-lg-4 templatemo-item-col all soon">
-                  <div class="meeting-item">
-                    <div class="thumb">
-                      <div class="price">
-                        <span>$14.00</span>
-                      </div>
-                      <a href="meeting-details.html"><img src="{% static 'assets/images/meeting-01.jpg' %}" alt=""></a>
-                    </div>
-                    <div class="down-content">
-                      <div class="date">
-                        <h6>Nov <span>12</span></h6>
-                      </div>
-                      <a href="meeting-details.html"><h4>New Lecturers Meeting</h4></a>
-                      <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>
-                    </div>
-                  </div>
-                </div>
-<!--                <div class="col-lg-4 templatemo-item-col all imp">-->
+              {% for i,j,k,l,m,n,o,p,q in data %}
+<!--            <div class="col-lg-12">-->
+<!--              <div class="row grid">-->
+<!--                <div class="col-lg-4 templatemo-item-col all soon">-->
 <!--                  <div class="meeting-item">-->
 <!--                    <div class="thumb">-->
 <!--                      <div class="price">-->
-<!--                        <span>$22.00</span>-->
+<!--                        <span>$14.00</span>-->
 <!--                      </div>-->
-<!--                      <a href="meeting-details.html"><img src="{% static 'assets/images/meeting-02.jpg' %}" alt=""></a>-->
+<!--                      <a href="meeting-details.html"><img src="{% static 'assets/images/meeting-01.jpg' %}" alt=""></a>-->
 <!--                    </div>-->
 <!--                    <div class="down-content">-->
 <!--                      <div class="date">-->
-<!--                        <h6>Nov <span>14</span></h6>-->
+<!--                        <h6>Nov <span>12</span></h6>-->
 <!--                      </div>-->
-<!--                      <a href="meeting-details.html"><h4>Online Teaching Techniques</h4></a>-->
+<!--                      <a href="meeting-details.html"><h4>{{i}}</h4></a>-->
 <!--                      <p>Morbi in libero blandit lectus<br>cursus ullamcorper.</p>-->
 <!--                    </div>-->
 <!--                  </div>-->
 <!--                </div>-->
+
+                <div class="col-lg-4 templatemo-item-col all imp">
+                  <div class="meeting-item">
+                    <div class="thumb">
+                      <div class="price">
+                        <span> ₹{{p}}</span>
+                      </div>
+                      <a href="meeting-details.html"><img src="/static/assets/images/{{j}}" alt="" height="225px"></a>
+                    </div>
+                    <div class="down-content">
+                      <div class="date">
+<!--                        <h6>Nov <span>14</span></h6>-->
+                      </div>
+                      <a href="meeting-details.html"><h4>{{i}}</h4></a>
+                      <p>From {{l}} to {{m}}</p>
+                        <p>Time {{n}} to {{o}}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
 <!--                <div class="col-lg-4 templatemo-item-col all soon">-->
 <!--                  <div class="meeting-item">-->
 <!--                    <div class="thumb">-->

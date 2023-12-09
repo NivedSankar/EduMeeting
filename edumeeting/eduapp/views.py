@@ -60,6 +60,7 @@ def student_index(request):
     id1 = request.session['st_id']
     a = studentreg.objects.get(id=id1)
     img = str(a.photo).split('/')[-1]
+    print(img)
     return render(request,'student_index.html',{'data':a,'img':img})
 
 def student_profile(request):
