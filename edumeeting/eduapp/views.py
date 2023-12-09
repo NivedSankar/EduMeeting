@@ -310,6 +310,7 @@ def enrolled_course(request,id):
 def enrolledcourse_view(request):
     id1 = request.session['st_id']
     b = studentreg.objects.get(id=id1)
+    name = b.username
     img1 = str(b.photo).split('/')[-1]
     a = course_enrolled.objects.all()
     course = []
@@ -336,4 +337,4 @@ def enrolledcourse_view(request):
     print(img)
     print(to_time)
 
-    return render(request, 'enrolled_course.html', {'data': mylist, 'img': img1})
+    return render(request, 'enrolled_course.html', {'data': mylist, 'img': img1,'name':name})
