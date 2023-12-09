@@ -283,8 +283,17 @@ def studentcourse_details(request,id):
 def course_payment(request,id):
     id1 = request.session['st_id']
     b = studentreg.objects.get(id=id1)
+    name = b.username
     img1 = str(b.photo).split('/')[-1]
     a = coursemodel.objects.get(id=id)
     img2 = str(a.course_img).split('/')[-1]
+    from_time = a.from_time.strftime('%I:%M %p')
+    to_time = a.to_time.strftime('%I:%M %p')
+    total = a.fees
+    if request.method == 'POST':
+        if request.POST.get('promo') == 'EDUOFFER':
+            total = a.fees - 300
+        else:
+            total = a.fees
 
-    return render(request, 'studentcourse_details.html', {'data': a, 'img1': img1, 'img2': img2})
+    return render(request, 'course_payment.html', {'data': a, 'img1': img1, 'img2': img2,'name':name,'total':total,'from':from_time,'to':to_time})

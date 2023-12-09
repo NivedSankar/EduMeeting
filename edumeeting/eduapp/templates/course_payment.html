@@ -165,33 +165,33 @@ h5,
             <div class="col-lg-7 pb-5 pe-lg-5">
                 <div class="row">
                     <div class="col-12 p-5">
-                        <img src="https://www.freepnglogos.com/uploads/honda-car-png/honda-car-upcoming-new-honda-cars-india-new-honda-3.png"
-                            alt="">
+                        <img src="/static/assets/images/{{img2}}"
+                            alt="" style="height: 300px;">
                     </div>
                     <div class="row m-0 bg-light">
                         <div class="col-md-4 col-6 ps-30 pe-0 my-4">
-                            <p class="text-muted">Mileage</p>
-                            <p class="h5">25000<span class="ps-1">Km</span></p>
+                            <p class="text-muted"></p>
+                            <p class="h5">{{data.from_day}}<span class="ps-1"></span></p>
                         </div>
                         <div class="col-md-4 col-6  ps-30 my-4">
-                            <p class="text-muted">Transmission</p>
-                            <p class="h5 m-0">Manual</p>
+                            <p class="text-muted"></p>
+                            <p class="h5 m-0">to</p>
                         </div>
                         <div class="col-md-4 col-6 ps-30 my-4">
-                            <p class="text-muted">Drive unit</p>
-                            <p class="h5 m-0">Front</p>
+                            <p class="text-muted"></p>
+                            <p class="h5 m-0">{{data.to_day}}</p>
                         </div>
                         <div class="col-md-4 col-6 ps-30 my-4">
-                            <p class="text-muted">Body</p>
-                            <p class="h5 m-0">Coupe</p>
+                            <p class="text-muted"></p>
+                            <p class="h5 m-0">{{from}}</p>
                         </div>
                         <div class="col-md-4 col-6 ps-30 my-4">
-                            <p class="text-muted">Color</p>
-                            <p class="h5 m-0">White</p>
+                            <p class="text-muted"></p>
+                            <p class="h5 m-0">to</p>
                         </div>
                         <div class="col-md-4 col-6 ps-30 my-4">
-                            <p class="text-muted">Daily UI</p>
-                            <p class="h5 m-0">#002</p>
+                            <p class="text-muted"></p>
+                            <p class="h5 m-0">{{to}}</p>
                         </div>
                     </div>
                 </div>
@@ -200,30 +200,36 @@ h5,
                 <div class="row m-0">
                     <div class="col-12 px-4">
                         <div class="d-flex align-items-end mt-4 mb-2">
-                            <p class="h4 m-0"><span class="pe-1">ZAZ</span><span class="pe-1">966</span><span
-                                    class="pe-1">B</span></p>
-                            <P class="ps-3 textmuted">1L</P>
+                            <p class="h4 m-0"><span class="pe-1">{{data.course_name}}</span><span class="pe-1"></span><span
+                                    class="pe-1"></span></p>
+                            <P class="ps-3 textmuted"></P>
                         </div>
                         <div class="d-flex justify-content-between mb-2">
-                            <p class="textmuted">Qty</p>
-                            <p class="fs-14 fw-bold">1</p>
+                            <p class="h5 m-0"><span class="pe-1">{{data.institution_name}}</span><span class="pe-1"></span><span
+                                    class="pe-1"></span></p>
+<!--                            <p class="textmuted">Qty</p>-->
+<!--                            <p class="fs-14 fw-bold">1</p>-->
                         </div>
                         <div class="d-flex justify-content-between mb-2">
                             <p class="textmuted">Subtotal</p>
-                            <p class="fs-14 fw-bold"><span class="fas fa-dollar-sign pe-1"></span>1,450</p>
+                            <p class="fs-14 fw-bold"><span class=""></span>₹{{data.fees}}</p>
                         </div>
+<!--                        <div class="d-flex justify-content-between mb-2">-->
+<!--                            <p class="textmuted">Shipping</p>-->
+<!--                            <p class="fs-14 fw-bold">Free</p>-->
+<!--                        </div>-->
                         <div class="d-flex justify-content-between mb-2">
-                            <p class="textmuted">Shipping</p>
-                            <p class="fs-14 fw-bold">Free</p>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
-                            <p class="textmuted">Promo code</p>
-                            <p class="fs-14 fw-bold">-<span class="fas fa-dollar-sign px-1"></span>100</p>
+                            <p class="textmuted">Promo code</p><br>
+                                        <form method="post">{% csrf_token %}
+                                        <input class="form-control" type="text" name="promo">
+                                            <input type="submit" value="Submit" style="margin-left: 65%; margin-top: 10%;">
+                                            </form>
+<!--                            <p class="fs-14 fw-bold">-<span class="fas fa-dollar-sign px-1"></span>100</p>-->
                         </div>
                         <div class="d-flex justify-content-between mb-3">
                             <p class="textmuted fw-bold">Total</p>
                             <div class="d-flex align-text-top ">
-                                <span class="fas fa-dollar-sign mt-1 pe-1 fs-14 "></span><span class="h4">1,350</span>
+                                <span class=""></span><span class="h4">₹{{total}}</span>
                             </div>
                         </div>
                     </div>
@@ -247,12 +253,12 @@ h5,
                                 <div class="d-flex mb-5">
                                     <span class="me-5">
                                         <p class="text-muted">Cardholder name</p>
-                                        <input class="form-control" type="text" value="David J.Frias"
+                                        <input class="form-control" type="text" value="{{name}}"
                                             placeholder="Name">
                                     </span>
                                     <div class="w-100 d-flex flex-column align-items-end">
                                         <p class="text-muted">CVC</p>
-                                        <input class="form-control3" type="text" value="630" placeholder="XXX">
+                                        <input class="form-control3" type="password" value="630" placeholder="XXX">
                                     </div>
                                 </div>
                             </div>
