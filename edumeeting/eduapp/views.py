@@ -353,3 +353,12 @@ def teacher_course_details(request,id):
     a = coursemodel.objects.get(id=id)
     img = str(a.course_img).split('/')[-1]
     return render(request,'teacher_course_details.html',{'data':a,'img':img})
+
+def assignment_add(request,id):
+    id1 = request.session['teacher_id']
+    if request.method == 'POST':
+        assignment = request.method.get('assignment')
+        a = add_assignment(teacher_id=id1,course_id=id,assignment=assignment)
+        a.save()
+        return HttpResponse('Assignment added')
+    return render(request,'add_assignment.html')

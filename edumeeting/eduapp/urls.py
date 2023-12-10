@@ -21,5 +21,6 @@ urlpatterns = [
     path('course_enrolled/<int:id>',enrolled_course),
     path('course_enrolled_view/',enrolledcourse_view),
     path('student_logout/',student_logout),
-    path('teacher_course_details/<int:id>',teacher_course_details)
+    path('teacher_course_details/<int:id>',teacher_course_details),
+    path('add_assignment/<int:id>',assignment_add)
 ]

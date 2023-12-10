@@ -79,6 +79,7 @@ class course_enrolled(models.Model):
         return self.course_name
 
 class add_assignment(models.Model):
+    course_id = models.CharField(max_length=30)
     teacher_id = models.CharField(max_length=30)
     assignment = models.CharField(max_length=500)
 
