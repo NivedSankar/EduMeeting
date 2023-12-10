@@ -203,11 +203,11 @@ button:focus{
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body style="background-image: url(/static/assets/images/meetings-bg.jpg)">
 <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-8">
-            <form id="regForm">
+            <form id="regForm" method="post">{% csrf_token %}
                 <h1 id="register">Assignment Form</h1>
 <!--                <div class="all-steps" id="all-steps">-->
 <!--                  <span class="step"><i class="fa fa-user"></i></span>-->
@@ -217,7 +217,7 @@ button:focus{
 <!--                  <span class="step"><i class="fa fa-spotify"></i></span>-->
 <!--                  <span class="step"><i class="fa fa-mobile-phone"></i></span>-->
 <!--                </div>-->
-                <form method="post">{% csrf_token %}
+
                 <div class="tab">
                   <h6>Add assignment</h6>
                     <p>
@@ -255,10 +255,10 @@ button:focus{
 <!--                    <h3>Thankyou for your feedback!</h3> <span>Thanks for your valuable information. It helps us to improve our services!</span>-->
 <!--                </div>-->
 <!--                <div style="overflow:auto;" id="nextprevious">-->
-                    <div style="float:right;">
-<!--                      <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button>-->
-<!--                      <button type="submit" id="nextBtn" ><i class="fa fa-angle-double-right"></i></button> </div>-->
-                </div>
+<!--                    <div style="float:right;">-->
+<!--&lt;!&ndash;                      <button type="button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa fa-angle-double-left"></i></button>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <button type="submit" id="nextBtn" ><i class="fa fa-angle-double-right"></i></button> </div>&ndash;&gt;-->
+<!--                </div>-->
             </form>
         </div>
     </div>

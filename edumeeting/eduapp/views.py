@@ -357,7 +357,7 @@ def teacher_course_details(request,id):
 def assignment_add(request,id):
     id1 = request.session['teacher_id']
     if request.method == 'POST':
-        assignment = request.method.get('assignment')
+        assignment = request.POST.get('assignment')
         a = add_assignment(teacher_id=id1,course_id=id,assignment=assignment)
         a.save()
         return HttpResponse('Assignment added')
