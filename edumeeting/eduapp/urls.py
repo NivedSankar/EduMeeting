@@ -19,5 +19,7 @@ urlpatterns = [
     path('course_details/<int:id>',studentcourse_details),
     path('course_payment/<int:id>',course_payment),
     path('course_enrolled/<int:id>',enrolled_course),
-    path('course_enrolled_view/',enrolledcourse_view)
+    path('course_enrolled_view/',enrolledcourse_view),
+    path('student_logout/',student_logout),
+    path('teacher_course_details/<int:id>',teacher_course_details)
 ]

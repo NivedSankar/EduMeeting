@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import *
 from django.contrib import messages
+from django.contrib.auth import logout
 from datetime import datetime
 from django.views import generic
 # Create your views here.
@@ -303,8 +304,13 @@ def enrolled_course(request,id):
     a = coursemodel.objects.get(id=id)
     id1 = request.session['st_id']
     total = request.session['total']
-    b = course_enrolled(course_name=a.course_name,course_img=a.course_img,teacher_id=a.teacher_id,institution_name=a.institution_name,from_day=a.from_day,to_day=a.to_day,from_time=a.from_time,to_time=a.to_time,total=total,student_id=id1)
-    b.save()
+    c = course_enrolled.objects.all()
+    for i in c:
+        if a.course_name == i.course_name:
+            return HttpResponse('course already enrolled')
+    else:
+        b = course_enrolled(course_name=a.course_name,course_img=a.course_img,teacher_id=a.teacher_id,institution_name=a.institution_name,from_day=a.from_day,to_day=a.to_day,from_time=a.from_time,to_time=a.to_time,total=total,student_id=id1)
+        b.save()
     return redirect(enrolledcourse_view)
 
 def enrolledcourse_view(request):
@@ -338,3 +344,12 @@ def enrolledcourse_view(request):
     print(to_time)
 
     return render(request, 'enrolled_course.html', {'data': mylist, 'img': img1,'name':name})
+
+def student_logout(request):
+    logout(request)
+    return redirect(index)
+
+def teacher_course_details(request,id):
+    a = coursemodel.objects.get(id=id)
+    img = str(a.course_img).split('/')[-1]
+    return render(request,'teacher_course_details.html',{'img':img})
