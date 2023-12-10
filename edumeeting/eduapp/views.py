@@ -352,4 +352,4 @@ def student_logout(request):
 def teacher_course_details(request,id):
     a = coursemodel.objects.get(id=id)
     img = str(a.course_img).split('/')[-1]
-    return render(request,'teacher_course_details.html',{'img':img})
+    return render(request,'teacher_course_details.html',{'data':a,'img':img})
