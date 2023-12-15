@@ -362,3 +362,13 @@ def assignment_add(request,id):
         a.save()
         return HttpResponse('Assignment added')
     return render(request,'add_assignment.html')
+
+def teacher_assignment_view(request):
+    a = add_assignment.objects.all()
+    id = []
+    assignment = []
+    for i in a:
+        assignment.append(i.assignment)
+        id.append(i.id)
+    data = zip(id,assignment)
+    return render(request,'teacher_assignment_view.html',{'data':data})
