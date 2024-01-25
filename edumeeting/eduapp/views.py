@@ -372,3 +372,6 @@ def teacher_assignment_view(request):
         id.append(i.id)
     data = zip(id,assignment)
     return render(request,'teacher_assignment_view.html',{'data':data})
+
+def std_assignent_view(request):
+    return render(request,'assignment_view.html')
