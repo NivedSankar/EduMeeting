@@ -375,3 +375,6 @@ def teacher_assignment_view(request):
 
 def std_assignent_view(request):
     return render(request,'assignment_view.html')
+
+def view_students(request):
+    return render(request,'student_view.html')
